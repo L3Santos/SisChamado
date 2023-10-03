@@ -20,7 +20,7 @@ export default function SignUp() {
         if(nome !== "" && email !== "" && password !== "") {
             await signUp(nome, email, password);
         } else {
-            toast.error("[ERRO], variável/campo null")
+            toast.warning("[ERRO], variável/campo null")
         }
 
         setNome("")

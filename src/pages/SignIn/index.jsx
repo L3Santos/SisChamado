@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import logo from "../../assets/logo.png";
 import { Link } from "react-router-dom"
+import { toast } from "react-toastify";
 import "./signIn.css";
 
 import { AuthContext} from "../../contexts/auth"
@@ -9,17 +10,19 @@ export default function SignIn() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    const { signIn  } = useContext(AuthContext);
+    const { signIn, loadingAuth  } = useContext(AuthContext);
 
-    function handleSignIn(e) {
+    async function handleSignIn(e) {
         e.preventDefault();
 
         if(email !== "" && password !== "") {
-            signIn();
-            console.log(email, password)
+            await signIn(email, password);
         } else {
-            alert("null")
+            toast.warning("[ERRO], variável/campo null")
         }
+        
+        setEmail("")
+        setPassword("")
     }
 
     return(
@@ -43,7 +46,9 @@ export default function SignIn() {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)} 
                     />
-                    <button type="submit" value="Acessar">Acessar</button> 
+                    <button type="submit" value="Acessar">
+                       {loadingAuth ? "Carregando..." : "Acessar"}
+                    </button> 
                 </form>
                 <Link to="/register">Criar uma conta</Link>
             </div>
