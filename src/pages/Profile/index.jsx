@@ -6,13 +6,35 @@ import { FiSettings, FiUpload } from "react-icons/fi";
 import "./profile.css"
 
 import avatar from "../../assets/avatar.png"
-import {AuthContext} from "../../contexts/auth"
+import {AuthContext, storegeUser, setUser, logout } from "../../contexts/auth"
 
 export default function Profile() {
 
-    const {user} = useContext(AuthContext);
+    const {user, logout, storegeUser, setUser} = useContext(AuthContext)
     const [avatarURL, setAvatarURL] = useState(user && user.avatarURL);
+    
+    const [nome, setNome] = useState(user && user.nome);
+    const [email, setEmail] = useState(user && user.email);
+    const [imgAvatar, setImgAvatar] = useState(null)
 
+    async function handlerLogout() {
+        await logout();
+    }
+
+    async function handleFile(e) {
+        if(e.target.files[0]) {
+            const image = e.target.files[0]
+
+            if(image.type ==="image/jpeg" || image.type === "image/png") {
+                setImgAvatar(image);
+                setAvatarURL(URL.createObjectURL(image))
+            } else {
+                alert("Envia uma imagem com formato .png ou .jpeg");
+                setAvatarURL(null)
+                return;
+            }
+        }
+    }
 
     return(
         <div>
@@ -35,6 +57,7 @@ export default function Profile() {
                             <input 
                                 type="file"
                                 accept="image/*" 
+                                onChange={handleFile}
                             />
                             <br/>
                             {avatarURL === null ?(
@@ -47,11 +70,15 @@ export default function Profile() {
                         <label>Nome</label>
                         <input 
                             type="text"
+                            value={nome}
+                            onChange={(e) => setNome(e.target.value)} 
                         />
 
                         <label>E-mail</label>
                         <input
                             type="email"
+                            value={email}
+                            disabled={true}
                         />
 
                         <button type="submit">Salvar</button>
@@ -59,7 +86,9 @@ export default function Profile() {
                 </div>
 
                 <div className="container">
-                    <button className="logout-btn">Sair</button>
+                    <button className="logout-btn" onClick={handlerLogout}>
+                        Sair
+                    </button>
                 </div>
             </div>
         </div>
