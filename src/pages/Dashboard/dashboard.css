@@ -1,0 +1,30 @@
+.novo {
+   float: right;
+   margin-bottom: 1.5em;
+   background-color: #83BF02;
+   padding: 0.5em;
+   border-radius: 5px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: 0;
+   color: #FFFF;
+   transition: ease-in-out 0.3s
+}
+
+.novo svg {
+   margin-right: 5px;
+}
+
+.novo:hover {
+   background-color: #5FD204;
+   transform: scale(1.1)
+}
+
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
