@@ -1,0 +1,21 @@
+form textarea {
+    resize: none;
+    heigth: 105px;
+}
+
+form input[type="radio"] {
+    margin: 15px 0; 
+}
+/* quanto estiver no input e não for o primeiro elemento*/
+form input[type="radio"]:not(:first-child) {
+    margin-left: 15px;
+}
+
+.status span {
+    padding-left: 0.5em;
+    font-size: 1.3em;
+}
+
+.status {
+    margin-bottom: 2em;
+}

@@ -24,7 +24,7 @@ export default function Dashboard() {
                     <FiMessageSquare size={25} />
                 </Title>
                 <>
-                    <Link to="/novo" className="novo">
+                    <Link to="/new" className="novo">
                         <FiPlus color="#FFFF" size={25}/>
                         Novo Chamado
                     </Link>
@@ -44,10 +44,10 @@ export default function Dashboard() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td data-label="Cliente"></td>
-                                <td data-label="Assunto"></td>
-                                <td data-label="Status"></td>
-                                <td data-label="Cadastrado"></td>
+                                <td data-label="Cliente">Mercado</td>
+                                <td data-label="Assunto">Suporte</td>
+                                <td data-label="Status"><span className="badge">Em aberto</span></td>
+                                <td data-label="Cadastrado">12/05/2022</td>
                                 <td data-label="#">
                                     <button className="action" style={{backgroundColor: "#3585F6"}}>
                                         <FiSearch color="#FFFF" size={17}/>
