@@ -35,7 +35,7 @@ export default function Profile() {
                 setImgAvatar(image);
                 setAvatarURL(URL.createObjectURL(image))
             } else {
-                alert("Envia uma imagem com formato .png ou .jpeg");
+                toast.warning("Envia uma imagem com formato .png ou .jpeg");
                 setAvatarURL(null)
                 return;
             }

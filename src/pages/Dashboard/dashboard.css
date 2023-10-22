@@ -1,6 +1,7 @@
+
 .novo {
    float: right;
-   margin-bottom: 1.5em;
+   margin-bottom: 1.25em;
    background-color: #83BF02;
    padding: 0.5em;
    border-radius: 5px;
@@ -24,9 +25,9 @@
 
 .dashboard {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
-  flex-direction: column;
+  flex-direction: flex-wrap;
 }
 
 table {
@@ -76,6 +77,12 @@ table td .badge {
    padding: 3px;
    border-radius: 3px;
    color: #FFFF;
+}
+
+.dashboard span {
+   margin: 2em 0;
+   font-size: 1.2em;
+   font-weight: 600;
 }
 
 @media screen and (max-width: 600px) {
